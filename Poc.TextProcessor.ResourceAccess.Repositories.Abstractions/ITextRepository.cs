@@ -1,7 +1,7 @@
 ﻿namespace Poc.TextProcessor.ResourceAccess.Repositories.Abstractions
 {
-    public class Class1
+    public interface ITextRepository
     {
-
+        Domains.Text Get(int id);
     }
 }

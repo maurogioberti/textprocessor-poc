@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.CrossCutting.Enums", "Poc.TextProcessor.CrossCutting.Enums\Poc.TextProcessor.CrossCutting.Enums.csproj", "{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Mappers.Abstractions", "Poc.TextProcessor.ResourceAccess.Mappers.Abstractions\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions.csproj", "{DCA86F4A-4552-4E48-8BCC-2335DE4F8229}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCA86F4A-4552-4E48-8BCC-2335DE4F8229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA86F4A-4552-4E48-8BCC-2335DE4F8229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCA86F4A-4552-4E48-8BCC-2335DE4F8229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCA86F4A-4552-4E48-8BCC-2335DE4F8229}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{C87E1D23-6AC2-4B0B-A3FE-1FA7CD4F79FB} = {528E1E2F-FA47-43FE-9BF6-F36E21DA08D2}
 		{26D4472E-5642-42E0-8C23-FC4FF3A7C23B} = {528E1E2F-FA47-43FE-9BF6-F36E21DA08D2}
 		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B} = {880228AF-746C-4478-B720-16DD5209FD08}
+		{DCA86F4A-4552-4E48-8BCC-2335DE4F8229} = {528E1E2F-FA47-43FE-9BF6-F36E21DA08D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6428E0B3-C383-433F-B410-3BA3B450824E}

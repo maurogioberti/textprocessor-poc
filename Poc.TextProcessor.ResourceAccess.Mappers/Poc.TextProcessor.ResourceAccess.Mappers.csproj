@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Contracts\Poc.TextProcessor.ResourceAccess.Contracts.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Domains\Poc.TextProcessor.ResourceAccess.Domains.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
