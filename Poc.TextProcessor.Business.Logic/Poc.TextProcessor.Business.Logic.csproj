@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poc.TextProcessor.Business.Logic.Abstractions\Poc.TextProcessor.Business.Logic.Abstractions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Exceptions\Poc.TextProcessor.CrossCutting.Exceptions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Globalization\Poc.TextProcessor.CrossCutting.Globalization.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Utils\Poc.TextProcessor.CrossCutting.Utils.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

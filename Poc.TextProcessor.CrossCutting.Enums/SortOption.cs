@@ -2,6 +2,7 @@
 {
     public enum SortOption
     {
+        None = 0,
         AlphabeticAsc,
         AlphabeticDesc,
         LengthAsc
