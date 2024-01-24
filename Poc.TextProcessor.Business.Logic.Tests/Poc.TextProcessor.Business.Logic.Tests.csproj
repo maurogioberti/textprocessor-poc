@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.18.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="NUnit" Version="4.0.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Poc.TextProcessor.Business.Logic.Abstractions\Poc.TextProcessor.Business.Logic.Abstractions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.Business.Logic\Poc.TextProcessor.Business.Logic.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers\Poc.TextProcessor.ResourceAccess.Mappers.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
