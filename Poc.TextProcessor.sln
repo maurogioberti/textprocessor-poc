@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Presentation.RestApi", "Poc.TextProcessor.Presentation.RestApi\Poc.TextProcessor.Presentation.RestApi.csproj", "{FB4EE79E-C7C8-4372-9D38-DD7E47D8C291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Presentation.RestApi", "Poc.TextProcessor.Presentation.RestApi\Poc.TextProcessor.Presentation.RestApi.csproj", "{FB4EE79E-C7C8-4372-9D38-DD7E47D8C291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.ResourceAccess.Contracts", "Poc.TextProcessor.ResourceAccess.Contracts\Poc.TextProcessor.ResourceAccess.Contracts.csproj", "{EF849E20-8B99-4C21-8519-4620D2CC8903}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Contracts", "Poc.TextProcessor.ResourceAccess.Contracts\Poc.TextProcessor.ResourceAccess.Contracts.csproj", "{EF849E20-8B99-4C21-8519-4620D2CC8903}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Business.Logic", "Poc.TextProcessor.Business.Logic\Poc.TextProcessor.Business.Logic.csproj", "{06A46EF7-E99F-4802-8D25-7F631B14E099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Business.Logic", "Poc.TextProcessor.Business.Logic\Poc.TextProcessor.Business.Logic.csproj", "{06A46EF7-E99F-4802-8D25-7F631B14E099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Business.Logic.Abstractions", "Poc.TextProcessor.Business.Logic.Abstractions\Poc.TextProcessor.Business.Logic.Abstractions.csproj", "{6F3A21C6-A6CF-442E-90D7-832AD17C9717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Business.Logic.Abstractions", "Poc.TextProcessor.Business.Logic.Abstractions\Poc.TextProcessor.Business.Logic.Abstractions.csproj", "{6F3A21C6-A6CF-442E-90D7-832AD17C9717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Business.Logic.Tests", "Poc.TextProcessor.Business.Logic.Tests\Poc.TextProcessor.Business.Logic.Tests.csproj", "{13C250FF-456D-41FC-9E95-8EAB74B4C552}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Business.Logic.Tests", "Poc.TextProcessor.Business.Logic.Tests\Poc.TextProcessor.Business.Logic.Tests.csproj", "{13C250FF-456D-41FC-9E95-8EAB74B4C552}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.ResourceAccess.Mappers", "Poc.TextProcessor.ResourceAccess.Mappers\Poc.TextProcessor.ResourceAccess.Mappers.csproj", "{1D0FCDC6-5653-49BC-95F3-B06E1FAFB225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Mappers", "Poc.TextProcessor.ResourceAccess.Mappers\Poc.TextProcessor.ResourceAccess.Mappers.csproj", "{1D0FCDC6-5653-49BC-95F3-B06E1FAFB225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.ResourceAccess.Domains", "Poc.TextProcessor.ResourceAccess.Domains\Poc.TextProcessor.ResourceAccess.Domains.csproj", "{2DEE00A2-B700-4540-B04C-436891E546BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Domains", "Poc.TextProcessor.ResourceAccess.Domains\Poc.TextProcessor.ResourceAccess.Domains.csproj", "{2DEE00A2-B700-4540-B04C-436891E546BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.ResourceAccess.Database", "Poc.TextProcessor.ResourceAccess.Database\Poc.TextProcessor.ResourceAccess.Database.csproj", "{B0886F4A-FADB-40BC-B4D1-B69040ED4F9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Database", "Poc.TextProcessor.ResourceAccess.Database\Poc.TextProcessor.ResourceAccess.Database.csproj", "{B0886F4A-FADB-40BC-B4D1-B69040ED4F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.CrossCutting.Exceptions", "Poc.TextProcessor.CrossCutting.Exceptions\Poc.TextProcessor.CrossCutting.Exceptions.csproj", "{B98DA1BA-1D5D-4C4B-87B7-C909377778E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.CrossCutting.Exceptions", "Poc.TextProcessor.CrossCutting.Exceptions\Poc.TextProcessor.CrossCutting.Exceptions.csproj", "{B98DA1BA-1D5D-4C4B-87B7-C909377778E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.CrossCutting.Globalization", "Poc.TextProcessor.CrossCutting.Globalization\Poc.TextProcessor.CrossCutting.Globalization.csproj", "{8DB81018-2F3B-48CD-8021-44B10EB81ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.CrossCutting.Globalization", "Poc.TextProcessor.CrossCutting.Globalization\Poc.TextProcessor.CrossCutting.Globalization.csproj", "{8DB81018-2F3B-48CD-8021-44B10EB81ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.CrossCutting.Utils", "Poc.TextProcessor.CrossCutting.Utils\Poc.TextProcessor.CrossCutting.Utils.csproj", "{99EBB0AC-A45E-4699-AD11-EDBF71A1C1C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.CrossCutting.Utils", "Poc.TextProcessor.CrossCutting.Utils\Poc.TextProcessor.CrossCutting.Utils.csproj", "{99EBB0AC-A45E-4699-AD11-EDBF71A1C1C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Presentation.Desktop", "Poc.TextProcessor.Presentation.Desktop\Poc.TextProcessor.Presentation.Desktop.csproj", "{255AABA0-737C-4BA6-87CC-6B20D3EB09EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Presentation.Desktop", "Poc.TextProcessor.Presentation.Desktop\Poc.TextProcessor.Presentation.Desktop.csproj", "{255AABA0-737C-4BA6-87CC-6B20D3EB09EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{100959D1-B919-4CD9-9C0F-35F1A03C0CE1}"
 EndProject
@@ -37,13 +37,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{28
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResourceAccess", "ResourceAccess", "{528E1E2F-FA47-43FE-9BF6-F36E21DA08D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Services", "Poc.TextProcessor.Services\Poc.TextProcessor.Services.csproj", "{1E57EB96-688E-4A96-ADF8-D1C2E4E45DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Services", "Poc.TextProcessor.Services\Poc.TextProcessor.Services.csproj", "{1E57EB96-688E-4A96-ADF8-D1C2E4E45DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.Services.Abstractions", "Poc.TextProcessor.Services.Abstractions\Poc.TextProcessor.Services.Abstractions.csproj", "{02DF0C13-549A-43D6-ACAD-E02CF6E0B074}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.Services.Abstractions", "Poc.TextProcessor.Services.Abstractions\Poc.TextProcessor.Services.Abstractions.csproj", "{02DF0C13-549A-43D6-ACAD-E02CF6E0B074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.ResourceAccess.Repositories.Abstractions", "Poc.TextProcessor.ResourceAccess.Repositories.Abstractions\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions.csproj", "{C87E1D23-6AC2-4B0B-A3FE-1FA7CD4F79FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Repositories.Abstractions", "Poc.TextProcessor.ResourceAccess.Repositories.Abstractions\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions.csproj", "{C87E1D23-6AC2-4B0B-A3FE-1FA7CD4F79FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc.TextProcessor.ResourceAccess.Repositories", "Poc.TextProcessor.ResourceAccess.Repositories\Poc.TextProcessor.ResourceAccess.Repositories.csproj", "{26D4472E-5642-42E0-8C23-FC4FF3A7C23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.ResourceAccess.Repositories", "Poc.TextProcessor.ResourceAccess.Repositories\Poc.TextProcessor.ResourceAccess.Repositories.csproj", "{26D4472E-5642-42E0-8C23-FC4FF3A7C23B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poc.TextProcessor.CrossCutting.Enums", "Poc.TextProcessor.CrossCutting.Enums\Poc.TextProcessor.CrossCutting.Enums.csproj", "{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +117,10 @@ Global
 		{26D4472E-5642-42E0-8C23-FC4FF3A7C23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D4472E-5642-42E0-8C23-FC4FF3A7C23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D4472E-5642-42E0-8C23-FC4FF3A7C23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{02DF0C13-549A-43D6-ACAD-E02CF6E0B074} = {28485212-8909-46BB-80E8-466679C44883}
 		{C87E1D23-6AC2-4B0B-A3FE-1FA7CD4F79FB} = {528E1E2F-FA47-43FE-9BF6-F36E21DA08D2}
 		{26D4472E-5642-42E0-8C23-FC4FF3A7C23B} = {528E1E2F-FA47-43FE-9BF6-F36E21DA08D2}
+		{A3EBB14D-2607-4F95-9B4A-BA01B72F430B} = {880228AF-746C-4478-B720-16DD5209FD08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6428E0B3-C383-433F-B410-3BA3B450824E}
