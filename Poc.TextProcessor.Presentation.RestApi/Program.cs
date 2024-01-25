@@ -1,6 +1,27 @@
+using Poc.TextProcessor.Business.Logic;
+using Poc.TextProcessor.Business.Logic.Abstractions;
+using Poc.TextProcessor.ResourceAccess.Mappers;
+using Poc.TextProcessor.ResourceAccess.Repositories;
+using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
+using Poc.TextProcessor.Services;
+using Poc.TextProcessor.Services.Abstractions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+//TextService
+builder.Services.AddTransient<ITextService, TextService>();
+builder.Services.AddTransient<ITextLogic, TextLogic>();
+builder.Services.AddTransient<ITextRepository, TextRepository>();
+builder.Services.AddTransient<ITextMapper, TextMapper>();
+
+//TextSortService
+builder.Services.AddTransient<ITextSortService, TextSortService>();
+builder.Services.AddTransient<ITextSortLogic, TextSortLogic>();
+builder.Services.AddTransient<ITextSortRepository, TextSortRepository>();
+builder.Services.AddTransient<ITextSortMapper, TextSortMapper>();
+builder.Services.AddControllers();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

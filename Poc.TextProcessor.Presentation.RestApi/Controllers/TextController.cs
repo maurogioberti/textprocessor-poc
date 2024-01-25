@@ -1,4 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Poc.TextProcessor.CrossCutting.Enums;
+using Poc.TextProcessor.CrossCutting.Globalization;
+using Poc.TextProcessor.CrossCutting.Utils.Constants;
+using Poc.TextProcessor.ResourceAccess.Contracts;
+using Poc.TextProcessor.ResourceAccess.Contracts.Collections;
+using Poc.TextProcessor.Services.Abstractions;
 
 namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 {
@@ -6,28 +12,42 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
     [Route("[controller]")]
     public class TextController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly ITextService _textService;
+        private readonly ITextSortService _textSortService;
 
-        private readonly ILogger<TextController> _logger;
-
-        public TextController(ILogger<TextController> logger)
+        public TextController(ITextService textService,
+                                ITextSortService textSortService)
         {
-            _logger = logger;
+            _textService = textService;
+            _textSortService = textSortService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("Options")]
+        [Produces("application/json", "application/xml")]
+        public SortCollection GetOptions()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return _textSortService.List();
+        }
+
+        [HttpGet("Statistics")]
+        [Produces("application/json", "application/xml")]
+        public Statistics GetStatistics([FromQuery] string textToAnalyze)
+        {
+            return _textService.GetStatistics(textToAnalyze);
+        }
+
+        [HttpGet("OrderedText")]
+        [Produces("application/json", "application/xml")]
+        public IActionResult GetOrderedText([FromQuery] string textToOrder, string orderOption)
+        {
+            if (Enum.TryParse(orderOption, true, out SortOption orderOptionEnum))
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                var sortedText = _textSortService.Sort(textToOrder, orderOptionEnum);
+                return Ok(sortedText);
+            }
+
+            var validOptions = string.Join($"{TextConstants.Comma}{TextConstants.Space}", Enum.GetNames(typeof(SortOption)));
+            return BadRequest($"{Messages.InvalidOrderOption}{TextConstants.Space}{validOptions}{TextConstants.Period}");
         }
     }
 }

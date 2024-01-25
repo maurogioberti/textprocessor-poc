@@ -11,4 +11,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poc.TextProcessor.Business.Logic\Poc.TextProcessor.Business.Logic.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Globalization\Poc.TextProcessor.CrossCutting.Globalization.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Utils\Poc.TextProcessor.CrossCutting.Utils.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers\Poc.TextProcessor.ResourceAccess.Mappers.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Repositories\Poc.TextProcessor.ResourceAccess.Repositories.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.Services.Abstractions\Poc.TextProcessor.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.Services\Poc.TextProcessor.Services.csproj" />
+  </ItemGroup>
+
 </Project>
