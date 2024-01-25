@@ -27,21 +27,27 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 
         [HttpGet("Options")]
         [Produces("application/json", "application/xml")]
-        public SortCollection GetOptions()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SortCollection))]
+        public IActionResult GetOptions()
         {
-            return _textSortService.List();
+            var sortOptions = _textSortService.List();
+            return Ok(sortOptions);
         }
 
         [HttpGet("Statistics")]
         [Produces("application/json", "application/xml")]
-        public Statistics GetStatistics([FromQuery] string textToAnalyze)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Statistics))]
+        public IActionResult GetStatistics([FromQuery] string textToAnalyze)
         {
-            return _textService.GetStatistics(textToAnalyze);
+            var textStatics = _textService.GetStatistics(textToAnalyze);
+            return Ok(textStatics);
         }
 
         [HttpGet("OrderedText")]
         [Produces("application/json", "application/xml")]
         [ResponseOnException(HttpStatusCode.InternalServerError, typeof(SortingException))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetOrderedText([FromQuery] string textToOrder, string orderOption)
         {
             if (Enum.TryParse(orderOption, true, out SortOption orderOptionEnum))

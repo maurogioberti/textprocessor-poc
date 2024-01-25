@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Poc.TextProcessor.CrossCutting.Globalization;
+using System.Text;
 
 namespace Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes
 {
@@ -15,12 +16,22 @@ namespace Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes
 
             if (responseOnExceptionAttribute != null && responseOnExceptionAttribute.ExceptionTypes.Contains(exceptionType))
             {
-                context.Result = new ObjectResult(Messages.UnexpectedError)
+                var responseContent = HandleExceptionResponse(context.Exception.Message);
+                context.Result = new ObjectResult(responseContent)
                 {
                     StatusCode = (int)responseOnExceptionAttribute.ResponseCode
                 };
                 context.ExceptionHandled = true;
             }
+        }
+
+        private static string HandleExceptionResponse(string exceptionMessage)
+        {
+            var messageBuilder = new StringBuilder();
+            messageBuilder.AppendLine(Messages.UnexpectedError);
+            messageBuilder.AppendLine(exceptionMessage);
+
+            return messageBuilder.ToString();
         }
     }
 }
