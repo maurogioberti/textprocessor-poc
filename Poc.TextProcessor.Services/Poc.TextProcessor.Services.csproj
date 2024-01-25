@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poc.TextProcessor.Business.Logic.Abstractions\Poc.TextProcessor.Business.Logic.Abstractions.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Enums\Poc.TextProcessor.CrossCutting.Enums.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Contracts\Poc.TextProcessor.ResourceAccess.Contracts.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.Services.Abstractions\Poc.TextProcessor.Services.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

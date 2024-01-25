@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Enums\Poc.TextProcessor.CrossCutting.Enums.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Contracts\Poc.TextProcessor.ResourceAccess.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>
