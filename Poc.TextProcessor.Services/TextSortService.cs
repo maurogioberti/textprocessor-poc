@@ -1,5 +1,6 @@
 ﻿using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.CrossCutting.Enums;
+using Poc.TextProcessor.CrossCutting.Exceptions;
 using Poc.TextProcessor.ResourceAccess.Contracts.Collections;
 using Poc.TextProcessor.Services.Abstractions;
 using Poc.TextProcessor.Services.Base;
@@ -34,6 +35,10 @@ namespace Poc.TextProcessor.Services
             try
             {
                 return _textSortLogic.Sort(textSortContent, orderOption);
+            }
+            catch (SortingException)
+            {
+                throw;
             }
             catch (Exception e)
             {
