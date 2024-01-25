@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Poc.TextProcessor.CrossCutting.Enums;
+using Poc.TextProcessor.CrossCutting.Exceptions;
 using Poc.TextProcessor.CrossCutting.Globalization;
 using Poc.TextProcessor.CrossCutting.Utils.Constants;
+using Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes;
 using Poc.TextProcessor.ResourceAccess.Contracts;
 using Poc.TextProcessor.ResourceAccess.Contracts.Collections;
 using Poc.TextProcessor.Services.Abstractions;
+using System.Net;
 
 namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 {
@@ -38,6 +41,7 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 
         [HttpGet("OrderedText")]
         [Produces("application/json", "application/xml")]
+        [ResponseOnException(HttpStatusCode.InternalServerError, typeof(SortingException))]
         public IActionResult GetOrderedText([FromQuery] string textToOrder, string orderOption)
         {
             if (Enum.TryParse(orderOption, true, out SortOption orderOptionEnum))
