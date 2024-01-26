@@ -1,11 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
+using Poc.TextProcessor.CrossCutting.Configurations.Database;
+using Poc.TextProcessor.CrossCutting.Globalization;
+using Poc.TextProcessor.ResourceAccess.Database;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
 using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
 using Poc.TextProcessor.Services;
 using Poc.TextProcessor.Services.Abstractions;
+using System.IO;
 using System.Text;
 using System.Windows;
 
@@ -32,6 +37,11 @@ namespace Poc.TextProcessor.Presentation.Desktop
 
         private void ConfigureServices(IServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+
             // Main Window
             services.AddTransient(typeof(MainWindow));
 
@@ -46,6 +56,18 @@ namespace Poc.TextProcessor.Presentation.Desktop
             services.AddTransient<ITextSortLogic, TextSortLogic>();
             services.AddTransient<ITextSortRepository, TextSortRepository>();
             services.AddTransient<ITextSortMapper, TextSortMapper>();
+
+            // Get configurations
+            var databaseProvider = configuration.GetValue<string>(DatabaseSettings.Provider);
+            var connectionString = databaseProvider switch
+            {
+                DatabaseSettings.SqlServer => configuration.GetConnectionString(ConnectionString.SqlServerConnection),
+                DatabaseSettings.Sqlite => configuration.GetConnectionString(ConnectionString.SqliteConnection),
+                _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
+            };
+
+            // Configure database services
+            services.ConfigureDatabaseServices(databaseProvider, connectionString);
         }
     }
 }

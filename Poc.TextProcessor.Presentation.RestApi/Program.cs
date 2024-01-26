@@ -4,7 +4,7 @@ using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.CrossCutting.Configurations.Database;
 using Poc.TextProcessor.CrossCutting.Globalization;
 using Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes;
-using Poc.TextProcessor.ResourceAccess.Database.EntityFramework;
+using Poc.TextProcessor.ResourceAccess.Database;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
 using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
@@ -39,21 +39,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Get configurations
 var databaseProvider = builder.Configuration.GetValue<string>(DatabaseSettings.Provider);
-builder.Services.AddDbContext<PocContext>(options =>
+var connectionString = databaseProvider switch
 {
-    switch (databaseProvider)
-    {
-        case DatabaseSettings.SqlServer:
-            options.UseSqlServer(builder.Configuration.GetConnectionString(ConnectionString.SqlServerConnection));
-            break;
-        case DatabaseSettings.Sqlite:
-            options.UseSqlite(builder.Configuration.GetConnectionString(ConnectionString.SqliteConnection));
-            break;
-        default:
-            throw new ArgumentException(Messages.InvalidDatabaseProvider);
-    }
-});
+    DatabaseSettings.SqlServer => builder.Configuration.GetConnectionString(ConnectionString.SqlServerConnection),
+    DatabaseSettings.Sqlite => builder.Configuration.GetConnectionString(ConnectionString.SqliteConnection),
+    _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
+};
+
+// Configure database services
+builder.Services.ConfigureDatabaseServices(databaseProvider, connectionString);
+
 
 var app = builder.Build();
 
