@@ -1,26 +1,22 @@
-﻿using Poc.TextProcessor.CrossCutting.Enums;
+﻿using Poc.TextProcessor.CrossCutting.Utils;
+using Poc.TextProcessor.ResourceAccess.Database.Abstractions;
 using Poc.TextProcessor.ResourceAccess.Domains;
+using Poc.TextProcessor.ResourceAccess.Entities;
 using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
+using Poc.TextProcessor.ResourceAccess.Repositories.Base;
 
 namespace Poc.TextProcessor.ResourceAccess.Repositories
 {
-    public class TextSortRepository : ITextSortRepository
+    public class TextSortRepository : RepositoryBase, ITextSortRepository
     {
-        // TODO: Currently, this method generates a list of sort options directly from the SortOption enum.
-        // This approach serves as a representative example for the technical exercise.
-        // In a real-world scenario, this data might come from a database or a configuration file.
+        public TextSortRepository(IDatabaseProvider databaseProvider) : base(databaseProvider)
+        {
+        }
 
         public IEnumerable<TextSort> List()
         {
-            return Enum
-                    .GetValues(typeof(SortOption))
-                    .Cast<SortOption>()
-                    .Select((option, index) => new TextSort
-                    {
-                        Id = index,
-                        Option = option
-                    })
-                    .ToList();
+            var textSorts = _databaseProvider.Get<TextSortEntity>().ToList();
+            return AutoMap.Map<TextSortEntity, TextSort>(textSorts);
         }
     }
 }

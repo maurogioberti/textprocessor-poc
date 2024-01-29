@@ -1,4 +1,5 @@
-﻿using Poc.TextProcessor.Business.Logic.Abstractions;
+﻿using AutoFixture;
+using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.Business.Logic.Base;
 using Poc.TextProcessor.CrossCutting.Utils.Constants;
 using Poc.TextProcessor.ResourceAccess.Contracts;
@@ -11,6 +12,7 @@ namespace Poc.TextProcessor.Business.Logic
     {
         private readonly ITextRepository _textRepository;
         private readonly ITextMapper _textMapper;
+        private readonly Fixture _fixture = new();
 
         public TextLogic(ITextRepository textRepository,
             ITextMapper textMapper)
@@ -19,13 +21,23 @@ namespace Poc.TextProcessor.Business.Logic
             _textMapper = textMapper;
         }
 
+        public Text Get(int id)
+        {
+            var textDomain = _textRepository.Get(id);
+            return _textMapper.Map(textDomain);
+        }
+
         public Text GetRandom()
         {
-            var random = new Random();
-            var randomInteger = random.Next(0, 100);
-            var textDomain = _textRepository.Get(randomInteger);
+            Random random = new Random();
+            var randomLength = random.Next(5, 120);
+            var longString = string.Join(TextConstants.Space, _fixture.CreateMany<string>(randomLength));
 
-            return _textMapper.Map(textDomain);
+            return _fixture
+                    .Build<Text>()
+                    .With(x => x.Id)
+                    .With(x => x.Content, longString)
+                    .Create();
         }
 
         public Statistics GetStatistics(string textContent)
