@@ -1,4 +1,4 @@
-﻿namespace Poc.TextProcessor.ResourceAccess.Database
+﻿namespace Poc.TextProcessor.ResourceAccess.Database.Abstractions
 {
     public interface IDatabaseProvider
     {

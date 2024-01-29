@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Poc.TextProcessor.ResourceAccess.Entities;
 
-namespace Poc.TextProcessor.ResourceAccess.Database.EntityFramework
+namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
 {
     public class PocContext : DbContext
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Poc.TextProcessor.ResourceAccess.Database.Abstractions;
 
-namespace Poc.TextProcessor.ResourceAccess.Database.EntityFramework
+namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
 {
     public class EntityFrameworkDatabaseProvider : IDatabaseProvider
     {

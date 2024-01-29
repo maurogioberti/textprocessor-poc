@@ -4,7 +4,7 @@ using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.CrossCutting.Configurations.Database;
 using Poc.TextProcessor.CrossCutting.Globalization;
 using Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes;
-using Poc.TextProcessor.ResourceAccess.Database;
+using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
 using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
