@@ -1,21 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Poc.TextProcessor.CrossCutting.Configurations.Database;
 using Poc.TextProcessor.CrossCutting.Globalization;
+using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Connectors;
 
 internal static class DatabaseServiceConfigurationHelpers
 {
-    public static void SetDatabaseProvider(string databaseProvider, string connectionString, DbContextOptionsBuilder options)
+    public static void InitializeDatabaseProvider(IConfiguration configuration, DbContextOptionsBuilder options)
     {
-        switch (databaseProvider)
+        // Define strategy based on the provider
+        var databaseProvider = configuration.GetValue<string>(DatabaseSettings.Provider);
+        IDatabaseConnector databaseConnector = databaseProvider switch
         {
-            case DatabaseSettings.SqlServer:
-                options.UseSqlServer(connectionString);
-                break;
-            case DatabaseSettings.Sqlite:
-                options.UseSqlite(connectionString);
-                break;
-            default:
-                throw new ArgumentException(Messages.InvalidDatabaseProvider);
-        }
+            DatabaseSettings.SqlServer => new SqlServerDatabaseConnector(),
+            DatabaseSettings.Sqlite => new SqliteDatabaseConnector(),
+            _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
+        };
+
+        // Use the strategy to configure the database
+        databaseConnector.ConfigureDatabase(options, configuration);
     }
 }

@@ -3,8 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.CrossCutting.Configurations;
-using Poc.TextProcessor.CrossCutting.Configurations.Database;
-using Poc.TextProcessor.CrossCutting.Globalization;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
@@ -58,17 +56,8 @@ namespace Poc.TextProcessor.Presentation.Desktop
             services.AddTransient<ITextSortRepository, TextSortRepository>();
             services.AddTransient<ITextSortMapper, TextSortMapper>();
 
-            // Get configurations
-            var databaseProvider = configuration.GetValue<string>(DatabaseSettings.Provider);
-            var connectionString = databaseProvider switch
-            {
-                DatabaseSettings.SqlServer => configuration.GetConnectionString(ConnectionString.SqlServerConnection),
-                DatabaseSettings.Sqlite => configuration.GetConnectionString(ConnectionString.SqliteConnection),
-                _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
-            };
-
             // Configure database services
-            services.ConfigureDatabaseServices(databaseProvider, connectionString);
+            services.ConfigureDatabaseServices(configuration);
         }
     }
 }

@@ -1,8 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
-using Poc.TextProcessor.CrossCutting.Configurations.Database;
-using Poc.TextProcessor.CrossCutting.Globalization;
 using Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
@@ -39,17 +36,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Get configurations
-var databaseProvider = builder.Configuration.GetValue<string>(DatabaseSettings.Provider);
-var connectionString = databaseProvider switch
-{
-    DatabaseSettings.SqlServer => builder.Configuration.GetConnectionString(ConnectionString.SqlServerConnection),
-    DatabaseSettings.Sqlite => builder.Configuration.GetConnectionString(ConnectionString.SqliteConnection),
-    _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
-};
-
 // Configure database services
-builder.Services.ConfigureDatabaseServices(databaseProvider, connectionString);
+builder.Services.ConfigureDatabaseServices(builder.Configuration);
 
 
 var app = builder.Build();

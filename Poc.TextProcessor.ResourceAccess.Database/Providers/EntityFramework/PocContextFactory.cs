@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Poc.TextProcessor.CrossCutting.Configurations;
-using Poc.TextProcessor.CrossCutting.Configurations.Database;
-using Poc.TextProcessor.CrossCutting.Globalization;
 
 namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
 {
@@ -20,15 +18,8 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
                 .AddJsonFile(AppConfigurations.AppSettingsFileName)
                 .Build();
 
-            var databaseProvider = configuration.GetValue<string>(DatabaseSettings.Provider);
-            var connectionString = databaseProvider switch
-            {
-                DatabaseSettings.SqlServer => configuration.GetConnectionString(ConnectionString.SqlServerConnection),
-                DatabaseSettings.Sqlite => configuration.GetConnectionString(ConnectionString.SqliteConnection),
-                _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
-            };
             var optionsBuilder = new DbContextOptionsBuilder<PocContext>();
-            DatabaseServiceConfigurationHelpers.SetDatabaseProvider(databaseProvider, connectionString, optionsBuilder);
+            DatabaseServiceConfigurationHelpers.InitializeDatabaseProvider(configuration, optionsBuilder);
 
             return new PocContext(optionsBuilder.Options);
         }
