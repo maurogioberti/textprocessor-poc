@@ -4,9 +4,9 @@ namespace Poc.TextProcessor.ResourceAccess.Database.EntityFramework
 {
     public class EntityFrameworkDatabaseProvider : IDatabaseProvider
     {
-        private readonly DbContext _context;
+        private readonly PocContext _context;
 
-        public EntityFrameworkDatabaseProvider(DbContext context)
+        public EntityFrameworkDatabaseProvider(PocContext context)
         {
             _context = context;
         }
