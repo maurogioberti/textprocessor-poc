@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Poc.TextProcessor.CrossCutting.Enums;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework;
 
 #nullable disable
@@ -11,9 +11,11 @@ using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework;
 namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Migrations
 {
     [DbContext(typeof(PocContext))]
-    partial class PocContextModelSnapshot : ModelSnapshot
+    [Migration("20240129152656_AddTextDataSeeding")]
+    partial class AddTextDataSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,17 +84,17 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Mi
                         new
                         {
                             Id = 1,
-                            Option = SortOption.AlphabeticAsc.ToString()
+                            Option = "AlphabeticAsc"
                         },
                         new
                         {
                             Id = 2,
-                            Option = SortOption.AlphabeticDesc.ToString()
+                            Option = "AlphabeticDesc"
                         },
                         new
                         {
                             Id = 3,
-                            Option = SortOption.LengthAsc.ToString()
+                            Option = "LengthAsc"
                         });
                 });
 #pragma warning restore 612, 618

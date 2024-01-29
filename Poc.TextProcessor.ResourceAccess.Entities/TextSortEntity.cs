@@ -12,6 +12,14 @@ namespace Poc.TextProcessor.ResourceAccess.Entities
         public int Id { get; set; }
 
         [Required]
-        public SortOption Option { get; set; }
+        [Column(TypeName = "nvarchar(24)")]
+        public required string Option { get; set; }
+
+        [NotMapped]
+        public SortOption OptionEnum
+        {
+            get => (SortOption)Enum.Parse(typeof(SortOption), Option, true);
+            set => Option = value.ToString();
+        }
     }
 }
