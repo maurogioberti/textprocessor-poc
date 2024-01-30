@@ -29,7 +29,7 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Mi
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Option = table.Column<int>(type: "int", nullable: false)
+                    Option = table.Column<string>(type: "nvarchar(24)", nullable: false)
                 },
                 constraints: table =>
                 {
