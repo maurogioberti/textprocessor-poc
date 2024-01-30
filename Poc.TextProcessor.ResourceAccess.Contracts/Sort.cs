@@ -1,8 +1,8 @@
 ﻿namespace Poc.TextProcessor.ResourceAccess.Contracts
 {
-    public class Sort
+    public record Sort
     {
-        public int Id { get; set; }
-        public string Option { get; set; } = string.Empty;
+        public int Id { get; init; }
+        public string Option { get; init; } = string.Empty;
     }
 }

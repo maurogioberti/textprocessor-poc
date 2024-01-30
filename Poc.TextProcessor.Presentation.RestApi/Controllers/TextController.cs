@@ -13,17 +13,10 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TextController : ControllerBase
+    public class TextController(ITextService textService, ITextSortService textSortService) : ControllerBase
     {
-        private readonly ITextService _textService;
-        private readonly ITextSortService _textSortService;
-
-        public TextController(ITextService textService,
-                                ITextSortService textSortService)
-        {
-            _textService = textService;
-            _textSortService = textSortService;
-        }
+        private readonly ITextService _textService = textService;
+        private readonly ITextSortService _textSortService = textSortService;
 
         [HttpGet("Options")]
         [Produces("application/json", "application/xml")]

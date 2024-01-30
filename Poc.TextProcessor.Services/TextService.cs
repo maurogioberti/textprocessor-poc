@@ -5,14 +5,9 @@ using Poc.TextProcessor.Services.Base;
 
 namespace Poc.TextProcessor.Services
 {
-    public class TextService : ServiceBase, ITextService
+    public class TextService(ITextLogic textLogic) : ServiceBase, ITextService
     {
-        private readonly ITextLogic _textLogic;
-
-        public TextService(ITextLogic textLogic)
-        {
-            _textLogic = textLogic;
-        }
+        private readonly ITextLogic _textLogic = textLogic;
 
         public Text GetRandom()
         {

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.18.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Poc.TextProcessor.Business.Logic.Abstractions\Poc.TextProcessor.Business.Logic.Abstractions.csproj" />
     <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Exceptions\Poc.TextProcessor.CrossCutting.Exceptions.csproj" />
     <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Globalization\Poc.TextProcessor.CrossCutting.Globalization.csproj" />

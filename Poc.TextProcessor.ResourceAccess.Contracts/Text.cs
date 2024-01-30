@@ -1,8 +1,8 @@
 ﻿namespace Poc.TextProcessor.ResourceAccess.Contracts
 {
-    public class Text
+    public record Text
     {
-        public int Id { get; set; }
-        public string Content { get; set; } = string.Empty;
+        public int Id { get; init; }
+        public string Content { get; init; } = string.Empty;
     }
 }

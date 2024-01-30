@@ -7,14 +7,9 @@ using Poc.TextProcessor.Services.Base;
 
 namespace Poc.TextProcessor.Services
 {
-    public class TextSortService : ServiceBase, ITextSortService
+    public class TextSortService(ITextSortLogic textSortLogic) : ServiceBase, ITextSortService
     {
-        private readonly ITextSortLogic _textSortLogic;
-
-        public TextSortService(ITextSortLogic textSortLogic)
-        {
-            _textSortLogic = textSortLogic;
-        }
+        private readonly ITextSortLogic _textSortLogic = textSortLogic;
 
         public SortCollection List()
         {

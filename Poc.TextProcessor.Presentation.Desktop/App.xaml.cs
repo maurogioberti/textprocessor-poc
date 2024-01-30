@@ -1,11 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
+using Poc.TextProcessor.CrossCutting.Configurations;
+using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
 using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
 using Poc.TextProcessor.Services;
 using Poc.TextProcessor.Services.Abstractions;
+using System.IO;
 using System.Text;
 using System.Windows;
 
@@ -32,20 +36,28 @@ namespace Poc.TextProcessor.Presentation.Desktop
 
         private void ConfigureServices(IServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile(AppConfigurations.AppSettingsFileName, optional: false, reloadOnChange: true)
+            .Build();
+
             // Main Window
             services.AddTransient(typeof(MainWindow));
 
-            //TextService
+            //Text Service
             services.AddTransient<ITextService, TextService>();
             services.AddTransient<ITextLogic, TextLogic>();
             services.AddTransient<ITextRepository, TextRepository>();
             services.AddTransient<ITextMapper, TextMapper>();
 
-            //TextSortService
+            //Text Sort Service
             services.AddTransient<ITextSortService, TextSortService>();
             services.AddTransient<ITextSortLogic, TextSortLogic>();
             services.AddTransient<ITextSortRepository, TextSortRepository>();
             services.AddTransient<ITextSortMapper, TextSortMapper>();
+
+            // Configure database services
+            services.ConfigureDatabaseServices(configuration);
         }
     }
 }
