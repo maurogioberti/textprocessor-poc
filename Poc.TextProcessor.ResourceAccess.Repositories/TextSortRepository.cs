@@ -7,12 +7,8 @@ using Poc.TextProcessor.ResourceAccess.Repositories.Base;
 
 namespace Poc.TextProcessor.ResourceAccess.Repositories
 {
-    public class TextSortRepository : RepositoryBase, ITextSortRepository
+    public class TextSortRepository(IDatabaseProvider databaseProvider) : RepositoryBase(databaseProvider), ITextSortRepository
     {
-        public TextSortRepository(IDatabaseProvider databaseProvider) : base(databaseProvider)
-        {
-        }
-
         public IEnumerable<TextSort> List()
         {
             var textSorts = _databaseProvider.Get<TextSortEntity>().ToList();

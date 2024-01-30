@@ -2,13 +2,8 @@
 
 namespace Poc.TextProcessor.ResourceAccess.Repositories.Base
 {
-    public class RepositoryBase
+    public class RepositoryBase(IDatabaseProvider databaseProvider)
     {
-        protected readonly IDatabaseProvider _databaseProvider;
-
-        public RepositoryBase(IDatabaseProvider databaseProvider)
-        {
-            _databaseProvider = databaseProvider;
-        }
+        protected readonly IDatabaseProvider _databaseProvider = databaseProvider;
     }
 }

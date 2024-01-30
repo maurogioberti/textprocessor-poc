@@ -4,14 +4,9 @@ using System.Linq.Expressions;
 
 namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
 {
-    public class EntityFrameworkDatabaseProvider : IDatabaseProvider
+    public class EntityFrameworkDatabaseProvider(PocContext context) : IDatabaseProvider
     {
-        private readonly PocContext _context;
-
-        public EntityFrameworkDatabaseProvider(PocContext context)
-        {
-            _context = context;
-        }
+        private readonly PocContext _context = context;
 
         public IEnumerable<T> Query<T>(string sql, object parameters = null) where T : class
         {

@@ -7,12 +7,8 @@ using Poc.TextProcessor.ResourceAccess.Repositories.Base;
 
 namespace Poc.TextProcessor.ResourceAccess.Repositories
 {
-    public class TextRepository : RepositoryBase, ITextRepository
+    public class TextRepository(IDatabaseProvider databaseProvider) : RepositoryBase(databaseProvider), ITextRepository
     {
-        public TextRepository(IDatabaseProvider databaseProvider) : base(databaseProvider)
-        {
-        }
-
         public Text Get(int id)
         {
             var text = _databaseProvider.Get<TextEntity>(x => x.Id == id).Single();

@@ -12,7 +12,7 @@ namespace Poc.TextProcessor.ResourceAccess.Mappers
 
         public SortCollection MapCollection(IEnumerable<Domains.TextSort> items)
         {
-            var contracts = items.Select(x => Map(x));
+            var contracts = items.Select(Map);
             return new SortCollection(contracts, contracts.Count());
         }
     }

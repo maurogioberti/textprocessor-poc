@@ -11,10 +11,8 @@ using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
 
 namespace Poc.TextProcessor.Business.Logic
 {
-    public class TextSortLogic : TextLogicBase, ITextSortLogic
+    public class TextSortLogic(ITextSortRepository textSortRepository, ITextSortMapper textSortMapper) : TextLogicBase, ITextSortLogic
     {
-        private readonly ITextSortRepository _textSortRepository;
-        private readonly ITextSortMapper _textSortMapper;
         private readonly Dictionary<SortOption, ITextSortingStrategy> sortingStrategies = new()
         {
             { SortOption.AlphabeticAsc, new AlphabeticAscendingSort() },
@@ -22,17 +20,10 @@ namespace Poc.TextProcessor.Business.Logic
             { SortOption.LengthAsc, new LengthAscendingSort() },
         };
 
-        public TextSortLogic(ITextSortRepository textSortRepository,
-            ITextSortMapper textSortMapper)
-        {
-            _textSortRepository = textSortRepository;
-            _textSortMapper = textSortMapper;
-        }
-
         public SortCollection List()
         {
-            var textSortDomains = _textSortRepository.List();
-            return _textSortMapper.MapCollection(textSortDomains);
+            var textSortDomains = textSortRepository.List();
+            return textSortMapper.MapCollection(textSortDomains);
         }
 
         public string Sort(string textContent, SortOption orderOption)

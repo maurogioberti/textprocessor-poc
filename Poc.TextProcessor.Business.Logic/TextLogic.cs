@@ -8,18 +8,11 @@ using Poc.TextProcessor.ResourceAccess.Repositories.Abstractions;
 
 namespace Poc.TextProcessor.Business.Logic
 {
-    public class TextLogic : TextLogicBase, ITextLogic
+    public class TextLogic(ITextRepository textRepository, ITextMapper textMapper) : TextLogicBase, ITextLogic
     {
-        private readonly ITextRepository _textRepository;
-        private readonly ITextMapper _textMapper;
+        private readonly ITextRepository _textRepository = textRepository;
+        private readonly ITextMapper _textMapper = textMapper;
         private readonly Fixture _fixture = new();
-
-        public TextLogic(ITextRepository textRepository,
-            ITextMapper textMapper)
-        {
-            _textRepository = textRepository;
-            _textMapper = textMapper;
-        }
 
         public Text Get(int id)
         {
