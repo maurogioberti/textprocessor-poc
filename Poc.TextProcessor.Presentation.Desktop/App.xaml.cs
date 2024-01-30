@@ -44,13 +44,13 @@ namespace Poc.TextProcessor.Presentation.Desktop
             // Main Window
             services.AddTransient(typeof(MainWindow));
 
-            //TextService
+            //Text Service
             services.AddTransient<ITextService, TextService>();
             services.AddTransient<ITextLogic, TextLogic>();
             services.AddTransient<ITextRepository, TextRepository>();
             services.AddTransient<ITextMapper, TextMapper>();
 
-            //TextSortService
+            //Text Sort Service
             services.AddTransient<ITextSortService, TextSortService>();
             services.AddTransient<ITextSortLogic, TextSortLogic>();
             services.AddTransient<ITextSortRepository, TextSortRepository>();

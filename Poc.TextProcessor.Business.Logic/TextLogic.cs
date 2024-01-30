@@ -22,7 +22,7 @@ namespace Poc.TextProcessor.Business.Logic
 
         public Text GetRandom()
         {
-            Random random = new Random();
+            var random = new Random();
             var randomLength = random.Next(5, 120);
             var longString = string.Join(TextConstants.Space, _fixture.CreateMany<string>(randomLength));
 
