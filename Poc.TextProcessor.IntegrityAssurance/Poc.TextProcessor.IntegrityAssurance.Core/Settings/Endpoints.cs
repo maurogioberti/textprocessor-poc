@@ -2,8 +2,6 @@
 {
     public static class Endpoints
     {
-        public static string BaseUrl = "https://localhost:44382";
-
         public static class Text
         {
             private static string BaseEndpoint => "Text";
