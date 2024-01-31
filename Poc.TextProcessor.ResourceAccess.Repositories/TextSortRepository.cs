@@ -1,4 +1,4 @@
-﻿using Poc.TextProcessor.CrossCutting.Utils;
+﻿using Poc.TextProcessor.CrossCutting.Utils.Mapper;
 using Poc.TextProcessor.ResourceAccess.Database.Abstractions;
 using Poc.TextProcessor.ResourceAccess.Domains;
 using Poc.TextProcessor.ResourceAccess.Entities;

@@ -1,5 +1,6 @@
 using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
+using Poc.TextProcessor.CrossCutting.Logging;
 using Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
@@ -55,3 +56,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+Logging.Initialize();

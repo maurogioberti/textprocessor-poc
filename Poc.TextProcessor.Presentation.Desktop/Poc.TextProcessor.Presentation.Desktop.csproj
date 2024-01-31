@@ -29,7 +29,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Poc.TextProcessor.Business.Logic\Poc.TextProcessor.Business.Logic.csproj" />
-		<ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Database\Poc.TextProcessor.ResourceAccess.Database.csproj" />
 		<ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions\Poc.TextProcessor.ResourceAccess.Mappers.Abstractions.csproj" />
 		<ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Mappers\Poc.TextProcessor.ResourceAccess.Mappers.csproj" />
 		<ProjectReference Include="..\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions\Poc.TextProcessor.ResourceAccess.Repositories.Abstractions.csproj" />

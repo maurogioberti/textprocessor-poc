@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.CrossCutting.Configurations;
+using Poc.TextProcessor.CrossCutting.Logging;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
@@ -29,6 +30,7 @@ namespace Poc.TextProcessor.Presentation.Desktop
             ConfigureServices(serviceCollection);
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             _serviceProvider = serviceCollection.BuildServiceProvider();
+            Logging.Initialize();
 
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
