@@ -7,12 +7,11 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
 {
     public class StatiticsTests : TestsBase
     {
-        private const string TextToMetrics = "abc-e-f-a";
-
         [Test]
         public async Task Statitics_When_Called_Should_Return_Ok()
         {
-            var request = new RestRequest(Core.Settings.Endpoints.Text.StatisticsEndpoint(TextToMetrics), Method.Get);
+            var text = _fixture.Create<string>();
+            var request = new RestRequest(Core.Settings.Endpoints.Text.StatisticsEndpoint(text), Method.Get);
             var response = await _client.ExecuteAsync<Statistics>(request);
             var statitics = response.Data;
 

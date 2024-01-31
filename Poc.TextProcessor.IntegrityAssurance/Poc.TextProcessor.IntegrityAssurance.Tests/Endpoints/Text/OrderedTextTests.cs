@@ -6,14 +6,17 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
 {
     public class OrderedTextTests : TestsBase
     {
-        private const string TextToOrder = "abced a b c";
+        private const string AlphabeticAscendingOrder = "AlphabeticAsc";
+        private const string AlphabeticDescendingOrder = "AlphabeticDesc";
+        private const string LengthAscendingOrder = "LengthAsc";
 
-        [TestCase("AlphabeticAsc")]
-        [TestCase("AlphabeticDesc")]
-        [TestCase("LengthAsc")]
+        [TestCase(AlphabeticAscendingOrder)]
+        [TestCase(AlphabeticDescendingOrder)]
+        [TestCase(LengthAscendingOrder)]
         public async Task OrderedText_When_Called_Should_Return_Ok(string orderOption)
         {
-            var request = new RestRequest(Core.Settings.Endpoints.Text.OrderedTextEndpoint(TextToOrder, orderOption), Method.Get);
+            var text = _fixture.Create<string>();
+            var request = new RestRequest(Core.Settings.Endpoints.Text.OrderedTextEndpoint(text, orderOption), Method.Get);
             var response = await _client.ExecuteAsync<string>(request);
             var orderedText = response.Data;
 
