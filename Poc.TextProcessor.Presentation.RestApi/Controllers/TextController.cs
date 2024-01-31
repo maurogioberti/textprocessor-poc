@@ -30,6 +30,7 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
         [HttpGet("Statistics")]
         [Produces("application/json", "application/xml")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Statistics))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetStatistics([FromQuery] string textToAnalyze)
         {
             var textStatics = _textService.GetStatistics(textToAnalyze);
