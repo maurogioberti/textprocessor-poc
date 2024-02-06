@@ -7,7 +7,7 @@ using Poc.TextProcessor.ResourceAccess.Repositories.Base;
 
 namespace Poc.TextProcessor.ResourceAccess.Repositories
 {
-    public class TextRepository(IDatabaseProvider databaseProvider) : RepositoryBase(databaseProvider), ITextRepository
+    public class TextRepository(IDatabaseReaderProvider databaseProvider) : RepositoryReaderBase(databaseProvider), ITextRepository
     {
         public Text Get(int id)
         {

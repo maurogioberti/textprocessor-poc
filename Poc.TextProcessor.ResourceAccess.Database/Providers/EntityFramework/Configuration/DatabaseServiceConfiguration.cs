@@ -13,7 +13,9 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Co
                 DatabaseServiceConfigurationHelpers.InitializeDatabaseProvider(configuration, options);
             });
 
-            services.AddScoped<IDatabaseProvider, EntityFrameworkDatabaseProvider>();
+            services.AddScoped<IDatabaseReaderProvider, EntityFrameworkReaderProvider>();
+            services.AddScoped<IDatabaseWriterProvider, EntityFrameworkWriterProvider>();
+            services.AddScoped<IDatabaseManagerProvider, EntityFrameworkManagerProvider>();
         }
     }
 }
