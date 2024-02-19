@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Poc.TextProcessor.CrossCutting.Configurations;
+using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration;
 
 namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
 {

@@ -4,20 +4,23 @@ using Poc.TextProcessor.CrossCutting.Configurations.Database;
 using Poc.TextProcessor.CrossCutting.Globalization;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Connectors;
 
-internal static class DatabaseServiceConfigurationHelpers
+namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework.Configuration
 {
-    public static void InitializeDatabaseProvider(IConfiguration configuration, DbContextOptionsBuilder options)
+    internal static class DatabaseServiceConfigurationHelpers
     {
-        // Define strategy based on the provider
-        var databaseProvider = configuration.GetValue<string>(DatabaseSettings.Provider);
-        IDatabaseConnector databaseConnector = databaseProvider switch
+        public static void InitializeDatabaseProvider(IConfiguration configuration, DbContextOptionsBuilder options)
         {
-            DatabaseSettings.SqlServer => new SqlServerDatabaseConnector(),
-            DatabaseSettings.Sqlite => new SqliteDatabaseConnector(),
-            _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
-        };
+            // Define strategy based on the provider
+            var databaseProvider = configuration.GetValue<string>(DatabaseSettings.Provider);
+            IDatabaseConnector databaseConnector = databaseProvider switch
+            {
+                DatabaseSettings.SqlServer => new SqlServerDatabaseConnector(),
+                DatabaseSettings.Sqlite => new SqliteDatabaseConnector(),
+                _ => throw new ArgumentException(Messages.InvalidDatabaseProvider)
+            };
 
-        // Use the strategy to configure the database
-        databaseConnector.ConfigureDatabase(options, configuration);
+            // Use the strategy to configure the database
+            databaseConnector.ConfigureDatabase(options, configuration);
+        }
     }
 }

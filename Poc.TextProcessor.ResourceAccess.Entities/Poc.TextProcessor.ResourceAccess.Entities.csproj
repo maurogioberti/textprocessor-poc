@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentNHibernate" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Configurations\Poc.TextProcessor.CrossCutting.Configurations.csproj" />
     <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Enums\Poc.TextProcessor.CrossCutting.Enums.csproj" />
   </ItemGroup>
