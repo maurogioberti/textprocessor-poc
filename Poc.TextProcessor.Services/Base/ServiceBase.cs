@@ -1,10 +1,10 @@
-﻿namespace Poc.TextProcessor.Services.Base
+﻿using Poc.TextProcessor.CrossCutting.Globalization;
+using Poc.TextProcessor.CrossCutting.Logging;
+
+namespace Poc.TextProcessor.Services.Base
 {
     public class ServiceBase
     {
-        protected void HandleException(Exception exception)
-        {
-            // TODO: Implement exception handling logic and error logging.
-        }
+        protected void HandleException(Exception exception) => Logging.LogError(exception, Messages.UnexpectedExceptionError);
     }
 }

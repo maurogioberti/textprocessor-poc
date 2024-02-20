@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Poc.TextProcessor.CrossCutting.Utils
+namespace Poc.TextProcessor.CrossCutting.Utils.Mapper
 {
     /// <summary>
     /// The AutoMap class provides methods for mapping objects of one type to objects of another type.

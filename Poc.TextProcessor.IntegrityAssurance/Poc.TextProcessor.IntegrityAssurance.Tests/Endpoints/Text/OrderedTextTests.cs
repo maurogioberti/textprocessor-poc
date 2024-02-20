@@ -9,14 +9,15 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
         private const string AlphabeticAscendingOrder = "AlphabeticAsc";
         private const string AlphabeticDescendingOrder = "AlphabeticDesc";
         private const string LengthAscendingOrder = "LengthAsc";
+        private const string NotExpectedOrder = "None";
 
         [TestCase(AlphabeticAscendingOrder)]
         [TestCase(AlphabeticDescendingOrder)]
         [TestCase(LengthAscendingOrder)]
-        public async Task OrderedText_When_Called_Should_Return_Ok(string orderOption)
+        public async Task OrderedText_When_Called_Should_Return_Ok(string sortOption)
         {
             var text = _fixture.Create<string>();
-            var request = new RestRequest(Core.Settings.Endpoints.Text.OrderedTextEndpoint(text, orderOption), Method.Get);
+            var request = new RestRequest(Core.Settings.Endpoints.Text.OrderedTextEndpoint(text, sortOption), Method.Get);
             var response = await _client.ExecuteAsync<string>(request);
             var orderedText = response.Data;
 
@@ -41,6 +42,16 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
             var response = await _client.ExecuteAsync(request);
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+        }
+
+        [Test]
+        public async Task OrderedText_When_Invalid_SortOption_Should_Return_InternalServerError()
+        {
+            var text = _fixture.Create<string>();
+            var request = new RestRequest(Core.Settings.Endpoints.Text.OrderedTextEndpoint(text, NotExpectedOrder), Method.Get);
+            var response = await _client.ExecuteAsync<string>(request);
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.InternalServerError));
         }
     }
 }
