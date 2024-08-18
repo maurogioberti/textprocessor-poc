@@ -1,6 +1,13 @@
 @Poc.TextProcessor.Presentation.RestApi_HostAddress = http://localhost:5162
 
-GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/weatherforecast/
+### Retrieve available text processing options
+GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/Options
 Accept: application/json
 
-###
+### Get statistics of the provided text
+GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/Statistics?textToAnalyze=sampleText
+Accept: application/json
+
+### Order the provided text based on the specified order option
+GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/OrderedText?textToOrder=sampleText&orderOption=AlphabeticDesc
+Accept: application/json
