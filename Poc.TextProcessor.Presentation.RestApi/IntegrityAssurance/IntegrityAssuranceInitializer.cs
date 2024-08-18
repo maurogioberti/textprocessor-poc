@@ -50,9 +50,9 @@ namespace Poc.TextProcessor.Presentation.RestApi.IntegrityAssurance
 
         private static void ExecuteScriptsDirectory(string scriptsDirectory)
         {
-            var scriptFiles = Directory.GetFiles(scriptsDirectory, ScriptsExtensions, SearchOption.AllDirectories)
-                                       .Where(f => !f.Contains(SystemScriptsDirectory))
-                                       .OrderBy(f => f);
+            var scriptFiles = Directory
+                                .GetFiles(scriptsDirectory, ScriptsExtensions, SearchOption.TopDirectoryOnly)
+                                .OrderBy(f => f);
 
             foreach (var scriptFile in scriptFiles)
             {
