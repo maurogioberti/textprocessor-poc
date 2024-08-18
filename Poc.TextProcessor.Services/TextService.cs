@@ -16,6 +16,10 @@ namespace Poc.TextProcessor.Services
             {
                 return _textLogic.Get(id);
             }
+            catch (KeyNotFoundException)
+            {
+                throw;
+            }
             catch (Exception e)
             {
                 HandleException(e);
@@ -29,6 +33,10 @@ namespace Poc.TextProcessor.Services
             try
             {
                 _textLogic.Remove(id);
+            }
+            catch (KeyNotFoundException)
+            {
+                throw;
             }
             catch (Exception e)
             {

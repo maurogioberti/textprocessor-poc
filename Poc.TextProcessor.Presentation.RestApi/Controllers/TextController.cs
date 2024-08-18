@@ -29,6 +29,7 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 
         [HttpGet("Get")]
         [Produces("application/json", "application/xml")]
+        [ResponseOnException(HttpStatusCode.NotFound, typeof(KeyNotFoundException))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Text))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -40,6 +41,7 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 
         [HttpDelete("Delete")]
         [Produces("application/json", "application/xml")]
+        [ResponseOnException(HttpStatusCode.NotFound, typeof(KeyNotFoundException))]
         [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Text))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

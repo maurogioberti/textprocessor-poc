@@ -18,12 +18,16 @@
             #endregion
 
             #region Get Text Endpoints
-            public static string Get(int id) => $"{BaseEndpoint}/Get?id={id}";
-            public static string GetAll => $"{BaseEndpoint}/GetAll";
+            public static string GetEndpoint(int id) => $"{BaseEndpoint}/Get?id={id}";
+            public static string GetInvalidEndpointEndpoint => $"{BaseEndpoint}/Get////";
+            public static string GetIdTooLongEndpoint => $"{BaseEndpoint}/Get?id=4556566545656655644654656454566545645";
+            public static string GetAllEndpoint => $"{BaseEndpoint}/GetAll";
             #endregion
 
-            #region Delete Text Endpoint
-            public static string Delete(int id) => $"{BaseEndpoint}/Delete?id={id}";
+            #region Delete Text Endpoints
+            public static string DeleteEndpoint(int id) => $"{BaseEndpoint}/Delete?id={id}";
+            public static string DeleteInvalidEndpoint => $"{BaseEndpoint}/Delete////";
+            public static string DeleteIdTooLongParametersEndpoint => $"{BaseEndpoint}/Delete?id=4556566545656655644654656454566545645";
             #endregion
 
             #region Statitics Endpoints

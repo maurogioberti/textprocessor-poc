@@ -13,7 +13,7 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
         [Test]
         public async Task GetAll_When_Called_Should_Return_Ok()
         {
-            var request = new RestRequest(Core.Settings.Endpoints.Text.GetAll, Method.Get);
+            var request = new RestRequest(Core.Settings.Endpoints.Text.GetAllEndpoint, Method.Get);
             var response = await _client.ExecuteAsync<TextCollection>(request);
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
@@ -23,7 +23,7 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
         [Test]
         public async Task GetAll_When_Called_Should_Return_Inserted_Text()
         {
-            var request = new RestRequest(Core.Settings.Endpoints.Text.GetAll, Method.Get);
+            var request = new RestRequest(Core.Settings.Endpoints.Text.GetAllEndpoint, Method.Get);
             var response = await _client.ExecuteAsync<TextCollection>(request);
             var textCollectionResponse = response.Data;
 
@@ -43,11 +43,10 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
             Assert.That(textItem.Content, Is.EqualTo(expectedTextContent));
         }
 
-
         [Test]
         public async Task Get_When_Called_Should_Return_Ok()
         {
-            var request = new RestRequest($"{Core.Settings.Endpoints.Text.Get(ExpectedGetId)}", Method.Get);
+            var request = new RestRequest($"{Core.Settings.Endpoints.Text.GetEndpoint(ExpectedGetId)}", Method.Get);
             var response = await _client.ExecuteAsync<TextCollection>(request);
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
@@ -59,7 +58,7 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
         {
             var expectedTextContent = "Test Result for Get by Id.";
 
-            var request = new RestRequest($"{Core.Settings.Endpoints.Text.Get(ExpectedGetId)}", Method.Get);
+            var request = new RestRequest($"{Core.Settings.Endpoints.Text.GetEndpoint(ExpectedGetId)}", Method.Get);
             var response = await _client.ExecuteAsync<Core.Contracts.Text>(request);
             var textItem = response.Data;
 
@@ -68,6 +67,24 @@ namespace Poc.TextProcessor.IntegrityAssurance.Tests.Endpoints.Text
             ValidationHelper.AssertIntegrityScriptNotNull(textItem, ExpectedGetId);
 
             Assert.That(textItem.Content, Is.EqualTo(expectedTextContent));
+        }
+
+        [Test]
+        public async Task Get_When_Invalid_Input_Should_Return_BadRequest()
+        {
+            var request = new RestRequest(Core.Settings.Endpoints.Text.GetIdTooLongEndpoint, Method.Get);
+            var response = await _client.ExecuteAsync(request);
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
+        }
+
+        [Test]
+        public async Task Get_When_Invalid_Input_Should_Return_NotFound()
+        {
+            var request = new RestRequest(Core.Settings.Endpoints.Text.GetInvalidEndpointEndpoint, Method.Get);
+            var response = await _client.ExecuteAsync(request);
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
         }
     }
 }
