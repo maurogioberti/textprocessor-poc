@@ -1,3 +1,5 @@
+USE [PocTextProcessor];
+
 SET IDENTITY_INSERT [dbo].[Texts] ON;
 
 INSERT INTO [dbo].[Texts]([Id], [Content]) VALUES (10001, N'Test Expected Result.');
