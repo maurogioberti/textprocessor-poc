@@ -28,5 +28,26 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.NHibernate
                 return entity;
             }
         }
+
+
+        public void Remove<T>(T entity) where T : class
+        {
+            using (var session = _sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(entity);
+                transaction.Commit();
+            }
+        }
+
+        public async Task RemoveAsync<T>(T entity) where T : class
+        {
+            using (var session = _sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                await session.DeleteAsync(entity);
+                await transaction.CommitAsync();
+            }
+        }
     }
 }
