@@ -4,5 +4,6 @@
     {
         IEnumerable<Domains.Text> Get();
         Domains.Text Get(int id);
+        void Remove(int id);
     }
 }

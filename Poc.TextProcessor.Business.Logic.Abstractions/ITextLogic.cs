@@ -7,6 +7,7 @@ namespace Poc.TextProcessor.Business.Logic.Abstractions
     {
         TextCollection Get();
         Text Get(int id);
+        void Remove(int id);
         Text GetRandom();
         Statistics GetStatistics(string textContent);
     }

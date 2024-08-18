@@ -24,6 +24,18 @@ namespace Poc.TextProcessor.Services
             return null;
         }
 
+        public void Remove(int id)
+        {
+            try
+            {
+                _textLogic.Remove(id);
+            }
+            catch (Exception e)
+            {
+                HandleException(e);
+            }
+        }
+
         public TextCollection Get()
         {
             try

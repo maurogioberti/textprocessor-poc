@@ -21,6 +21,11 @@ namespace Poc.TextProcessor.Business.Logic
             return _textMapper.Map(textDomain);
         }
 
+        public void Remove(int id)
+        {
+            _textRepository.Remove(id);
+        }
+
         public TextCollection Get()
         {
             var textDomains = _textRepository.Get();

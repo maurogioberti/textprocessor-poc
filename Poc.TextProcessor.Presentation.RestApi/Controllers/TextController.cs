@@ -29,12 +29,26 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
 
         [HttpGet("Get")]
         [Produces("application/json", "application/xml")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TextCollection))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Text))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get(int id)
         {
             var sortOptions = _textService.Get(id);
             return Ok(sortOptions);
         }
+
+        [HttpDelete("Delete")]
+        [Produces("application/json", "application/xml")]
+        [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Text))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Delete(int id)
+        {
+            _textService.Remove(id);
+            return NoContent();
+        }
+
 
         [HttpGet("Options")]
         [Produces("application/json", "application/xml")]
