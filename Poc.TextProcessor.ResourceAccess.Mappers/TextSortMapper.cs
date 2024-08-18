@@ -1,4 +1,6 @@
-﻿namespace Poc.TextProcessor.ResourceAccess.Mappers
+﻿using Poc.TextProcessor.ResourceAccess.Contracts.Collections;
+
+namespace Poc.TextProcessor.ResourceAccess.Mappers
 {
     public class TextMapper : ITextMapper
     {
@@ -7,5 +9,11 @@
             Id = text.Id,
             Content = text.Content
         };
+
+        public TextCollection MapCollection(IEnumerable<Domains.Text> items)
+        {
+            var contracts = items.Select(Map);
+            return new TextCollection(contracts, contracts.Count());
+        }
     }
 }

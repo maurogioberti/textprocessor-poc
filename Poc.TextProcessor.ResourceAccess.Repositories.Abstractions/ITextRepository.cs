@@ -2,6 +2,7 @@
 {
     public interface ITextRepository
     {
+        IEnumerable<Domains.Text> Get();
         Domains.Text Get(int id);
     }
 }

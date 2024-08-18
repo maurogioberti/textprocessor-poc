@@ -18,6 +18,24 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
         private readonly ITextService _textService = textService;
         private readonly ITextSortService _textSortService = textSortService;
 
+        [HttpGet("GetAll")]
+        [Produces("application/json", "application/xml")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TextCollection))]
+        public IActionResult GetAll()
+        {
+            var sortOptions = _textService.Get();
+            return Ok(sortOptions);
+        }
+
+        [HttpGet("Get")]
+        [Produces("application/json", "application/xml")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TextCollection))]
+        public IActionResult Get(int id)
+        {
+            var sortOptions = _textService.Get(id);
+            return Ok(sortOptions);
+        }
+
         [HttpGet("Options")]
         [Produces("application/json", "application/xml")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SortCollection))]

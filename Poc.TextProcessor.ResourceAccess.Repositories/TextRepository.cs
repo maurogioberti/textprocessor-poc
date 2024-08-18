@@ -14,5 +14,11 @@ namespace Poc.TextProcessor.ResourceAccess.Repositories
             var text = _databaseProvider.Get<TextEntity>(x => x.Id == id).Single();
             return AutoMap.Map<TextEntity, Text>(text);
         }
+
+        public IEnumerable<Text> Get()
+        {
+            var text = _databaseProvider.Get<TextEntity>();
+            return AutoMap.Map<TextEntity, Text>(text);
+        }
     }
 }
