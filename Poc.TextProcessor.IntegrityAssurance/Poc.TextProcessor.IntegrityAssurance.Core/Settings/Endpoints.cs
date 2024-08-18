@@ -22,6 +22,10 @@
             public static string GetAll => $"{BaseEndpoint}/GetAll";
             #endregion
 
+            #region Delete Text Endpoint
+            public static string Delete(int id) => $"{BaseEndpoint}/Delete?id={id}";
+            #endregion
+
             #region Statitics Endpoints
             public static string StatisticsEndpoint(string text) => $"{BaseEndpoint}/Statistics?textToAnalyze={text}";
             public static string StatisticsInvalidEndpoint => $"{BaseEndpoint}/Statistics////";

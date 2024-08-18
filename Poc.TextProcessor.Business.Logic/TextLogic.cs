@@ -2,6 +2,7 @@
 using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.Business.Logic.Base;
 using Poc.TextProcessor.CrossCutting.Utils.Constants;
+using Poc.TextProcessor.CrossCutting.Utils.Helpers;
 using Poc.TextProcessor.ResourceAccess.Contracts;
 using Poc.TextProcessor.ResourceAccess.Contracts.Collections;
 using Poc.TextProcessor.ResourceAccess.Mappers;
@@ -18,11 +19,16 @@ namespace Poc.TextProcessor.Business.Logic
         public Text Get(int id)
         {
             var textDomain = _textRepository.Get(id);
+            HttpStatusHelper.NotFoundException(textDomain, nameof(textDomain));
+
             return _textMapper.Map(textDomain);
         }
 
         public void Remove(int id)
         {
+            var textDomain = _textRepository.Get(id);
+            HttpStatusHelper.NotFoundException(textDomain, nameof(textDomain));
+
             _textRepository.Remove(id);
         }
 
