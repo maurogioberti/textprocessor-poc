@@ -15,11 +15,11 @@ namespace Poc.TextProcessor.Business.Logic
     {
         private readonly ITextSortRepository _textSortRepository = textSortRepository;
         private readonly ITextSortMapper _textSortMapper = textSortMapper;
-        private readonly Dictionary<SortOption, ITextSortingStrategy> sortingStrategies = new()
+        private readonly Dictionary<SortOption, Func<ITextSortingStrategy>> sortingStrategies = new()
         {
-            { SortOption.AlphabeticAsc, new AlphabeticAscendingSort() },
-            { SortOption.AlphabeticDesc, new AlphabeticDescendingSort() },
-            { SortOption.LengthAsc, new LengthAscendingSort() },
+            { SortOption.AlphabeticAsc, () => new AlphabeticAscendingSort() },
+            { SortOption.AlphabeticDesc, () => new AlphabeticDescendingSort() },
+            { SortOption.LengthAsc, () => new LengthAscendingSort() },
         };
 
         public SortCollection List()
@@ -30,8 +30,9 @@ namespace Poc.TextProcessor.Business.Logic
 
         public string Sort(string textContent, SortOption orderOption)
         {
-            if (sortingStrategies.TryGetValue(orderOption, out var textSortingStrategy))
+            if (sortingStrategies.TryGetValue(orderOption, out var textSortingStrategyFactory))
             {
+                var textSortingStrategy = textSortingStrategyFactory.Invoke();
                 var words = SplitText(textContent);
                 return textSortingStrategy.SortedContent(words);
             }

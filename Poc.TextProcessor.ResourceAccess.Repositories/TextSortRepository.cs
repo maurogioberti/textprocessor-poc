@@ -1,4 +1,4 @@
-﻿using Poc.TextProcessor.CrossCutting.Utils;
+﻿using Poc.TextProcessor.CrossCutting.Utils.Mapper;
 using Poc.TextProcessor.ResourceAccess.Database.Abstractions;
 using Poc.TextProcessor.ResourceAccess.Domains;
 using Poc.TextProcessor.ResourceAccess.Entities;
@@ -7,7 +7,7 @@ using Poc.TextProcessor.ResourceAccess.Repositories.Base;
 
 namespace Poc.TextProcessor.ResourceAccess.Repositories
 {
-    public class TextSortRepository(IDatabaseProvider databaseProvider) : RepositoryBase(databaseProvider), ITextSortRepository
+    public class TextSortRepository(IDatabaseReaderProvider databaseProvider) : RepositoryReaderBase(databaseProvider), ITextSortRepository
     {
         public IEnumerable<TextSort> List()
         {

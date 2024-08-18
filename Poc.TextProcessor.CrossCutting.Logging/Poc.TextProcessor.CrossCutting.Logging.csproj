@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentNHibernate" Version="3.3.0" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="2.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Configurations\Poc.TextProcessor.CrossCutting.Configurations.csproj" />
-    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Enums\Poc.TextProcessor.CrossCutting.Enums.csproj" />
+    <ProjectReference Include="..\Poc.TextProcessor.CrossCutting.Utils\Poc.TextProcessor.CrossCutting.Utils.csproj" />
   </ItemGroup>
 
 </Project>
