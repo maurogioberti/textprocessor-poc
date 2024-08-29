@@ -1,5 +1,17 @@
 @Poc.TextProcessor.Presentation.RestApi_HostAddress = http://localhost:5162
 
+### Get all texts
+GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/GetAll
+Accept: application/json
+
+### Retrieve text by ID
+GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/Get?id=1
+Accept: application/json
+
+### Delete text by ID
+DELETE {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/Delete?id=1
+Accept: application/json
+
 ### Retrieve available text processing options
 GET {{Poc.TextProcessor.Presentation.RestApi_HostAddress}}/Text/Options
 Accept: application/json
