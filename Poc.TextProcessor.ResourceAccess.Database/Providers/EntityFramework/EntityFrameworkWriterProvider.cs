@@ -21,6 +21,18 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
             return entity;
         }
 
+        public void Remove<T>(T entity) where T : class
+        {
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public async Task RemoveAsync<T>(T entity) where T : class
+        {
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
         private void AddOrUpdate<T>(T entity) where T : class
         {
             var entry = _context.Entry(entity);

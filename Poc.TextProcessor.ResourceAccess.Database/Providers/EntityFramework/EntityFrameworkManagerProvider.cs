@@ -52,6 +52,16 @@ namespace Poc.TextProcessor.ResourceAccess.Database.Providers.EntityFramework
         {
             return await _writerProvider.SaveAsync<T>(entity);
         }
+
+        public void Remove<T>(T entity) where T : class
+        {
+            _writerProvider.Remove(entity);
+        }
+
+        public async Task RemoveAsync<T>(T entity) where T : class
+        {
+            await _writerProvider.RemoveAsync<T>(entity);
+        }
         #endregion
 
         public int Execute(string sql, object parameters = null)

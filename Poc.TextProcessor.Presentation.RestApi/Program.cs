@@ -2,6 +2,7 @@ using Poc.TextProcessor.Business.Logic;
 using Poc.TextProcessor.Business.Logic.Abstractions;
 using Poc.TextProcessor.CrossCutting.Logging;
 using Poc.TextProcessor.Presentation.RestApi.Infrastructure.FilterAttributes;
+using Poc.TextProcessor.Presentation.RestApi.IntegrityAssurance;
 using Poc.TextProcessor.ResourceAccess.Database.Providers.Configuration;
 using Poc.TextProcessor.ResourceAccess.Mappers;
 using Poc.TextProcessor.ResourceAccess.Repositories;
@@ -41,6 +42,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureDatabaseServices(builder.Configuration);
 
 var app = builder.Build();
+
+IntegrityAssuranceInitializer.InitializeIntegrityAssurance(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -18,6 +18,40 @@ namespace Poc.TextProcessor.Presentation.RestApi.Controllers
         private readonly ITextService _textService = textService;
         private readonly ITextSortService _textSortService = textSortService;
 
+        [HttpGet("GetAll")]
+        [Produces("application/json", "application/xml")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TextCollection))]
+        public IActionResult GetAll()
+        {
+            var sortOptions = _textService.Get();
+            return Ok(sortOptions);
+        }
+
+        [HttpGet("Get")]
+        [Produces("application/json", "application/xml")]
+        [ResponseOnException(HttpStatusCode.NotFound, typeof(KeyNotFoundException))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Text))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Get(int id)
+        {
+            var sortOptions = _textService.Get(id);
+            return Ok(sortOptions);
+        }
+
+        [HttpDelete("Delete")]
+        [Produces("application/json", "application/xml")]
+        [ResponseOnException(HttpStatusCode.NotFound, typeof(KeyNotFoundException))]
+        [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(Text))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Delete(int id)
+        {
+            _textService.Remove(id);
+            return NoContent();
+        }
+
+
         [HttpGet("Options")]
         [Produces("application/json", "application/xml")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SortCollection))]
